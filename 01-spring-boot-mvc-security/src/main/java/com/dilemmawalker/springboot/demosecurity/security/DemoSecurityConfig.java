@@ -40,6 +40,7 @@ public class DemoSecurityConfig {
         //ensures all requests are authenticated & only then passed
         http.authorizeHttpRequests(configurer ->
                 configurer.anyRequest().authenticated())
+//                        .anyRequest().permitAll())
                 //form login helps to create a custom login form which is helpful in login process
                 .formLogin(form ->
                         form
@@ -48,7 +49,8 @@ public class DemoSecurityConfig {
                                 .loginProcessingUrl("/authenticateTheUser")
                                 //permits users to see uptill this point without authentication
                                 .permitAll()
-                );
+                                .defaultSuccessUrl("/", true)
+                ).logout(logout -> logout.permitAll());
 
         return http.build();
     }
