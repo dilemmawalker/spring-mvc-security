@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<!--http://www.thymeleaf.org gives reference to thymeleaf namespace-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Custom Login Page</title>
+</head>
+
+<body>
+    <h2>My Custom Login Page</h2>
+<form action="#" th:action="@{/authenticateTheUser}" method="POST">
+    <p>
+<!--        Spring security filters use exact name entity field value for login-->
+        User Name: <input type="text" name="username" />
+    </p>
+
+    <p>
+        Password: <input type="password" name="password" />
+    </p>
+
+    <input type="submit" value="Login" />
+</form>
+</body>
+</html>
