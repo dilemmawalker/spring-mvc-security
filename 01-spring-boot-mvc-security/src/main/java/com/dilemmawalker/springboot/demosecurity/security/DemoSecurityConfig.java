@@ -27,7 +27,7 @@ public class DemoSecurityConfig {
                 .build();
 
         UserDetails susan = User.builder()
-                .username("susan")
+                .username("f")
                 .password("1234")
                 .roles("EMPLOYEE", "MANAGER", "ADMIN")
                 .build();
