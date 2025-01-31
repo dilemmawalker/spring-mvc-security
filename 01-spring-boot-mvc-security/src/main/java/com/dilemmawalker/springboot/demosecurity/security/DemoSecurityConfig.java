@@ -54,7 +54,12 @@ public class DemoSecurityConfig {
                                 //permits users to see uptill this point without authentication
                                 .permitAll()
                                 .defaultSuccessUrl("/", true)
-                ).logout(logout -> logout.permitAll());
+
+                        //access custom access Denied page
+                ).logout(logout -> logout.permitAll())
+                .exceptionHandling(configurer ->
+                        configurer
+                                .accessDeniedPage("/accessDenied"));
 
         return http.build();
     }
