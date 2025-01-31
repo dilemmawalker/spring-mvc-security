@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>dilemmawalker company home page</title>
@@ -9,6 +10,14 @@
     <h2>dilemmawalker company home page</h2>
 <hr>
     Welcome to company home page!
+
+
+<!--    Display user name & role-->
+    <p>
+        User: <span sec:authentication="principal.username"></span>
+        <br><br>
+        Role(s): <span sec:authentication="principal.authorities"></span>
+    </p>
 
 <form action="#" th:action="@{/logout}" method="POST">
     <input type="submit" value="Logout" />
