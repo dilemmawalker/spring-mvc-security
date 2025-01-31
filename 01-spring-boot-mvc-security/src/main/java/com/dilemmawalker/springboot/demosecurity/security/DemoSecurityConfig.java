@@ -39,7 +39,11 @@ public class DemoSecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         //ensures all requests are authenticated & only then passed
         http.authorizeHttpRequests(configurer ->
-                configurer.anyRequest().authenticated())
+                configurer
+                        .requestMatchers("/").hasRole("EMPLOYEE")
+                        .requestMatchers("/leaders/**").hasRole("MANAGER")
+                        .requestMatchers("/systems/**").hasRole("ADMIN")
+                        .anyRequest().authenticated())
 //                        .anyRequest().permitAll())
                 //form login helps to create a custom login form which is helpful in login process
                 .formLogin(form ->

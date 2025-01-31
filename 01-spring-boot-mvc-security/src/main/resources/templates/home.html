@@ -11,6 +11,16 @@
 <hr>
     Welcome to company home page!
 
+    <p>
+        <a th:href="@{/leaders}">Leadership Meeting</a>
+        (Only for manager peeps)
+    </p>
+
+    <p>
+        <a th:href="@{/systems}">IT Systems Meeting</a>
+        (Only for Admin Peeps)
+    </p>
+
 
 <!--    Display user name & role-->
     <p>
@@ -19,6 +29,7 @@
         Role(s): <span sec:authentication="principal.authorities"></span>
     </p>
 
+<!--    Add a logout button-->
 <form action="#" th:action="@{/logout}" method="POST">
     <input type="submit" value="Logout" />
 
