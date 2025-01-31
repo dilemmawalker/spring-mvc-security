@@ -11,15 +11,21 @@
 <hr>
     Welcome to company home page!
 
+<!--    only visible to people with MANAGER role-->
+    <div sec:authorize="hasRole('MANAGER')">
     <p>
         <a th:href="@{/leaders}">Leadership Meeting</a>
         (Only for manager peeps)
     </p>
+    </div>
 
+<!--    only visible to people with ADMIN role-->
+    <div sec:authorize="hasRole('ADMIN')">
     <p>
         <a th:href="@{/systems}">IT Systems Meeting</a>
         (Only for Admin Peeps)
     </p>
+    </div>
 
 
 <!--    Display user name & role-->
