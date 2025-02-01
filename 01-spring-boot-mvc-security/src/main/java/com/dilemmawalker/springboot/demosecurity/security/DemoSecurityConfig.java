@@ -43,7 +43,25 @@ public class DemoSecurityConfig {
 //    Table name: users & authorities are accessible directly.
     @Bean
     public UserDetailsManager userDetailsManager(DataSource dataSource  ){
-        return new JdbcUserDetailsManager(dataSource);
+        //Rather need to set JdbcUserDetailsManager as a local variable.
+//        return new JdbcUserDetailsManager(dataSource);
+
+        JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager(dataSource);
+
+        //define query to retrieve user by username
+        jdbcUserDetailsManager.setUsersByUsernameQuery(
+                "select user_id, pw, active from members where user_id=?"
+        );
+
+        //define query to retrieve authorities/roles by username
+        jdbcUserDetailsManager.setUsersByUsernameQuery(
+                "select user_id, role from roles where user_id=?"
+
+                //we can probably use jpaRepository for a better usecase of not writing sql & rather using
+//                built in queries
+        );
+
+        return jdbcUserDetailsManager;
     }
 
     @Bean
