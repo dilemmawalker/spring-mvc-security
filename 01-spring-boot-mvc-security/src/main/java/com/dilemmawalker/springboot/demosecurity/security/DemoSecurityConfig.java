@@ -60,6 +60,7 @@ public class DemoSecurityConfig {
                 //we can probably use jpaRepository for a better usecase of not writing sql & rather using
 //                built in queries
         );
+        //
 
         return jdbcUserDetailsManager;
     }
